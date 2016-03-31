@@ -137,7 +137,7 @@ import org.jooq.util.postgres.PostgresDatabase;
  */
 public class JavaGenerator extends AbstractGenerator {
 
-    private static final JooqLogger        log                          = JooqLogger.getLogger(JavaGenerator.class);
+    protected static final JooqLogger        log                          = JooqLogger.getLogger(JavaGenerator.class);
 
     /**
      * The Javadoc to be used for private constructors
@@ -179,7 +179,7 @@ public class JavaGenerator extends AbstractGenerator {
      */
     private Set<File>                      files                        = new LinkedHashSet<File>();
 
-    private final boolean                  scala;
+    protected final boolean                  scala;
     private final String                   tokenVoid;
 
     public JavaGenerator() {
@@ -2999,7 +2999,7 @@ public class JavaGenerator extends AbstractGenerator {
         }
     }
 
-    private List<? extends TypedElementDefinition<? extends Definition>> getTypedElements(Definition definition) {
+    protected List<? extends TypedElementDefinition<? extends Definition>> getTypedElements(Definition definition) {
         if (definition instanceof TableDefinition) {
             return ((TableDefinition) definition).getColumns();
         }
@@ -3898,7 +3898,7 @@ public class JavaGenerator extends AbstractGenerator {
         printValidationAnnotation(out, column);
     }
 
-    private void printValidationAnnotation(JavaWriter out, TypedElementDefinition<?> column) {
+    protected void printValidationAnnotation(JavaWriter out, TypedElementDefinition<?> column) {
         if (generateValidationAnnotations()) {
             DataTypeDefinition type = column.getType();
 
